@@ -66,14 +66,11 @@ npm run dev
 
 ### 2. 各插件（真实 DSH 能力）
 
-每个插件独立安装依赖并构建：
+每个插件独立安装依赖并构建（`corepack pnpm` 已可免装 pnpm）：
 
 ```bash
-cd plugins/dsh-dt-status && pnpm install && pnpm run build && cd ../..
-cd plugins/dsh-dt-pet    && pnpm install && pnpm run build && cd ../..
-cd plugins/dsh-dt-git    && pnpm install && pnpm run build && cd ../..
-cd plugins/dsh-dt-run    && pnpm install && pnpm run build && cd ../..
-cd plugins/dsh-dt-ssh    && pnpm install && pnpm run build && cd ../..
+for p in plugins/*/; do (cd "$p" && corepack pnpm install && corepack pnpm run build); done
+cd skins/taozhe-light && corepack pnpm install && corepack pnpm run build && cd ../..
 ```
 
 > 注意：`dsh-dt-ssh` 依赖 `ssh2`，pnpm 11 需要批准构建脚本。若安装报
@@ -84,15 +81,14 @@ cd plugins/dsh-dt-ssh    && pnpm install && pnpm run build && cd ../..
 ### 3. 注册插件到 DSH profile 并启动 dsh web
 
 ```bash
-dsh plugin --profile web add link:$(pwd)/plugins/dsh-dt-status
-dsh plugin --profile web add link:$(pwd)/plugins/dsh-dt-pet
-dsh plugin --profile web add link:$(pwd)/plugins/dsh-dt-git
-dsh plugin --profile web add link:$(pwd)/plugins/dsh-dt-run
-dsh plugin --profile web add link:$(pwd)/plugins/dsh-dt-ssh
+for p in plugins/dsh-dt-*; do dsh plugin --profile web add "link:$(pwd)/$p"; done
 
 dsh --profile web
 # 浏览器打开打印的地址（默认 http://127.0.0.1:端口）
 ```
+
+> 也可只装聚合包 `dsh plugin --profile web add link:$(pwd)/plugins/dsh-dt-all`，
+> 但需先发布各 `@masked-knight02/*` 子包到 npm（本地开发建议逐个 link）。
 
 ## 需要继承的（Windows 上已定型，Mac 保持一致）
 

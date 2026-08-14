@@ -13,7 +13,6 @@ plugins/dsh-dt-<feature>/    功能插件（cordis bundle，host + client 半区
 skins/<skin-id>/             皮肤源包（skin.json + client apply，kebab-case id）
 pets/<pet-id>/               桌宠清单（pet.json + 动画帧）
 .dsh/skills/<name>/          skills（SKILL.md）
-docs/                        长期文档
 public/                      预览应用静态资产（皮肤背景图、桌宠帧）
 ```
 
