@@ -2,7 +2,13 @@
   "name": "dsh-dt-ui",
   "version": "1.0.0",
   "private": true,
-  "scripts": {"dev": "vite --host 0.0.0.0 --config vite.dev.config.js", "build": "vite build", "preview": "vite preview --host 0.0.0.0"},
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --config vite.dev.config.js",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "build:plugins": "node scripts/build-all.mjs",
+    "register:plugins": "node scripts/register-all.mjs"
+  },
   "dependencies": {"@vitejs/plugin-react": "latest", "vite": "latest", "react": "latest", "react-dom": "latest", "lucide-react": "latest"},
   "devDependencies": {}
 }

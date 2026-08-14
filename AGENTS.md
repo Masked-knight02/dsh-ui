@@ -13,7 +13,16 @@ plugins/dsh-dt-<feature>/    功能插件（cordis bundle，host + client 半区
 skins/<skin-id>/             皮肤源包（skin.json + client apply，kebab-case id）
 pets/<pet-id>/               桌宠清单（pet.json + 动画帧）
 .dsh/skills/<name>/          skills（SKILL.md）
+scripts/                     维护脚本（build-all / register-all）
 public/                      预览应用静态资产（皮肤背景图、桌宠帧）
+```
+
+## 常用命令
+
+```sh
+npm run dev               # 启动预览工作台（无需 DSH）
+npm run build:plugins     # 一键构建全部插件与皮肤
+npm run register:plugins  # 一键把全部插件 link 进 dsh profile
 ```
 
 ## 命名规范
