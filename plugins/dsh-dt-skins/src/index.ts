@@ -1,6 +1,6 @@
 /**
  * @masked-knight02/dsh-client-ui-dt-skins - host half: a skin registry route
- * that discovers skins under skins/*/skin.json and reports their manifests.
+ * that discovers skins under skins/<id>/skin.json and reports their manifests.
  * The browser half renders the sidebar entry and the skin-center panel from
  * this route. A skin is added by dropping a skins/<id>/ directory with a
  * valid skin.json; no registry file needs editing.
@@ -45,7 +45,7 @@ function skinsDir(): string {
   return override !== undefined && override !== '' ? resolve(override) : resolve('skins')
 }
 
-/** Discover skins/*/skin.json and return valid manifests in order. */
+/** Discover skins/<id>/skin.json and return valid manifests in order. */
 function listSkins(): SkinManifest[] {
   const dir = skinsDir()
   let entries: string[] = []
