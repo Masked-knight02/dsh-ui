@@ -1,0 +1,23 @@
+{
+  "id": "taozhe",
+  "name": "陶喆",
+  "nameEn": "Taozhe",
+  "description": "dsh-dt-ui 收录的第一个桌宠：陶喆。动画帧放在 public/pet/taozhe/ 下，按 mode 分目录，从 00.png 编号。",
+  "stateMap": {
+    "idle": "idle",
+    "thinking": "waiting",
+    "working": "running",
+    "success": "review",
+    "error": "failed",
+    "waiting": "waiting"
+  },
+  "frames": {
+    "idle": { "count": 6 },
+    "waiting": { "count": 6 },
+    "running": { "count": 6 },
+    "review": { "count": 6 },
+    "failed": { "count": 8 },
+    "waving": { "count": 4 },
+    "jumping": { "count": 5 }
+  }
+}

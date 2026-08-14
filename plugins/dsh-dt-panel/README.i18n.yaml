@@ -1,0 +1,6 @@
+# Bilingual-pair consistency record (docs/i18n.md): the git blob hash of each
+# side as of the last confirmed-consistent state. Both languages carry equal authority;
+# after editing either side, bring the other along and re-record with:
+#   node scripts/verify-docs.mjs --write <dir>
+README.md: 80da9fe719e6d17a358ae1ec58a8f7c405d3a338
+README.zh.md: af3a17fac9d3464417ec661410b3c383b1dcc1e3

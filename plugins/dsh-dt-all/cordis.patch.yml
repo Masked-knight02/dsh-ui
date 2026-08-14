@@ -1,0 +1,31 @@
+# dsh-dt-all bundle patch: inserts every dsh-dt-ui feature plugin row into the
+# web profile roster, so one install activates the whole family. Applied as a
+# profile bundle layer (the `dsh.bundle.patch` manifest field) over dsh-base;
+# activate with `dsh plugin --profile web add link:<path>/plugins/dsh-dt-all`.
+#
+# Hand-maintained aggregate of the ten feature plugins (this repository has no
+# aggregate generator script): keep this list and the package.json
+# dependencies in sync. Each row is a bare plugin by package name: the node
+# half (exports ".") runs in the host process, and the child's own dsh.client
+# declaration in its package.json loads its browser half (exports "./client").
+- insert:
+    - id: ui-dt-status
+      name: '@masked-knight02/dsh-client-ui-dt-status'
+    - id: ui-dt-pet
+      name: '@masked-knight02/dsh-client-ui-dt-pet'
+    - id: ui-dt-git
+      name: '@masked-knight02/dsh-client-ui-dt-git'
+    - id: ui-dt-run
+      name: '@masked-knight02/dsh-client-ui-dt-run'
+    - id: ui-dt-ssh
+      name: '@masked-knight02/dsh-client-ui-dt-ssh'
+    - id: ui-dt-board
+      name: '@masked-knight02/dsh-client-ui-dt-board'
+    - id: ui-dt-stats
+      name: '@masked-knight02/dsh-client-ui-dt-stats'
+    - id: ui-dt-remote
+      name: '@masked-knight02/dsh-client-ui-dt-remote'
+    - id: ui-dt-panel
+      name: '@masked-knight02/dsh-client-ui-dt-panel'
+    - id: ui-dt-skins
+      name: '@masked-knight02/dsh-client-ui-dt-skins'

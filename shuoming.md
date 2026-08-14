@@ -2,23 +2,30 @@
 
 ## 这是什么
 
-本目录是从 **Windows 机器**打包导出的 `dsh-dt-ui` 完整开发源码，发给 macOS
-继续开发使用。包含：
+本目录是 `dsh-dt-ui` 完整开发源码（已从 Windows 迁移到 macOS 并规范化）。包含：
 
-- `src/` — 主应用源码（Vite + React 复刻工作台，含聊天、任务看板、Git 图谱、
-  皮肤中心、SSH、手机远程、更新检查等面板）
-- `plugins/` — 5 个自己的 DSH Cordis 插件（双半区 host/client）：
+- `src/` — 独立 Vite + React 预览工作台（无需 DSH，`npm run dev`）
+- `plugins/` — 11 个自己的 DSH Cordis 插件（双半区 host/client）：
   - `dsh-dt-status` — 工作区状态（读真实 workspace registry）
   - `dsh-dt-pet` — 桌宠状态联动（读真实状态文件）
   - `dsh-dt-git` — 真实 Git 图谱（subprocess + workspace 门禁）
   - `dsh-dt-run` — 任务执行（真实 session.prompt）
   - `dsh-dt-ssh` — SSH 运维（真实 ssh2 连接）
+  - `dsh-dt-board` — 任务看板（五列看板 + 本地持久化）
+  - `dsh-dt-stats` — 实时统计（TPS / token）
+  - `dsh-dt-remote` — 移动端远程（扫码配对）
+  - `dsh-dt-panel` — 文件 / 变更 / 预览面板
+  - `dsh-dt-skins` — 皮肤中心（按 `skins/*/skin.json` 自动收录）
+  - `dsh-dt-all` — 全家桶聚合（装一个等于装全家桶）
+- `skins/` — 皮肤（当前 `taozhe-light` 陶喆浅色）
+- `pets/` — 桌宠清单（当前 `taozhe`）
+- `.dsh/skills/` — skills（skin-developer / pet-developer / dsh-dt-release）
 - `dsh-web-ui-main/` — 本地参考仓库（github.com/zhu1090093659/dsh-web-ui），
-  复刻时的主要对照来源，**不要修改**，只读参考
-- `public/` — 桌宠动画帧、背景图
-- `陶喆浅色.png` — 工作台背景图（皮肤中心使用）
-- Windows 启动脚本（`启动 DSH 工作台.bat/.ps1`、`设置桌宠状态.ps1`）已移除；
-  macOS 直接用下文命令
+  只读参考，**不要修改**
+- `public/` — 桌宠动画帧、皮肤背景图
+
+> 当前结构与命名规范以 [AGENTS.md](AGENTS.md) 与 [README.md](README.md) /
+> [README.zh.md](README.zh.md) 为准。
 
 ## 已排除的内容（请勿找回，均可在 Mac 上重建）
 
