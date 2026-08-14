@@ -38,6 +38,16 @@ const FRAME_COUNT: Record<string, number> = {
   jumping: 5,
 }
 
+/** Chinese labels per pet state mode. */
+const MODE_LABEL: Record<PetMode, string> = {
+  idle: '空闲',
+  thinking: '思考中',
+  working: '工作中',
+  success: '成功',
+  error: '出错',
+  waiting: '等待',
+}
+
 const POLL_MS = 700
 const FRAME_MS = 150
 
@@ -140,18 +150,20 @@ export function TaozhePet(): JSX.Element {
           position: 'absolute',
           right: 0,
           top: 0,
-          maxWidth: 112,
-          padding: '7px 9px',
+          zIndex: 2,
+          maxWidth: 140,
+          padding: '8px 11px',
           border: '1px solid #e3bfdc',
           borderRadius: '12px 12px 3px 12px',
-          background: '#fff8fc',
+          background: '#fff',
           color: '#8d6280',
-          fontSize: 10,
-          boxShadow: '0 5px 14px rgba(92,49,93,.09)',
+          fontSize: 12,
+          fontWeight: 500,
+          boxShadow: '0 6px 16px rgba(92,49,93,.16)',
           whiteSpace: 'nowrap',
         }}
       >
-        {status.message !== '' ? status.message : status.mode}
+        {status.message !== '' ? status.message : MODE_LABEL[status.mode]}
       </div>
     </div>
   )

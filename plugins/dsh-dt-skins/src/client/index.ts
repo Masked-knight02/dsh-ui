@@ -125,6 +125,26 @@ export function apply(ctx: ClientContext): void {
 
     tryPlace()
 
+    // Auto-apply the persisted active skin (or the first skin as default) on
+    // load, so the wallpaper is visible without opening the panel.
+    void (async () => {
+      try {
+        const response = await fetch('/api/dsh-dt-skins/registry', { cache: 'no-store' })
+        const data = await response.json() as { ok: boolean; skins: Array<{ id: string; bodyAttr: string; preview: { light: string } }> }
+        const skins = data.skins ?? []
+        if (skins.length === 0) return
+        const activeId = localStorage.getItem('dsh.skin.active')
+        const skin = skins.find(item => item.id === activeId) ?? skins[0]
+        document.body.setAttribute(skin.bodyAttr, '')
+        document.body.style.backgroundImage = `url("${skin.preview.light}")`
+        document.body.style.backgroundSize = 'cover'
+        document.body.style.backgroundPosition = 'center'
+        if (activeId !== skin.id) localStorage.setItem('dsh.skin.active', skin.id)
+      } catch {
+        // A transient failure keeps the previous background.
+      }
+    })()
+
     return () => {
       waitObserver.disconnect()
       rootObserver.disconnect()
