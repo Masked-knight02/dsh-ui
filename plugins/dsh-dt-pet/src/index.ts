@@ -10,6 +10,7 @@
 import { existsSync, readFileSync, statSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import type { Context } from '@deepseek-ai/cordis'
 import type {} from '@deepseek-ai/dsh-host-webserver'
@@ -70,8 +71,37 @@ function handlePetStatus(_req: IncomingMessage, res: ServerResponse): void {
   res.end(JSON.stringify(payload))
 }
 
+/** The animation modes the taozhe pet ships. */
+const PET_MODES = new Set(['idle', 'waiting', 'running', 'review', 'failed', 'waving', 'jumping'])
+
+/** Resolve the public/pet/taozhe frames directory (plugin-relative, else cwd). */
+function petFramesDir(): string {
+  const pluginRelative = fileURLToPath(new URL('../../../public/pet/taozhe', import.meta.url))
+  return existsSync(pluginRelative) ? pluginRelative : resolve('public', 'pet', 'taozhe')
+}
+
+/** Handle one pet frame request (?mode=<mode>&n=<nn>), serving a PNG frame. */
+function handleFrame(req: IncomingMessage, res: ServerResponse): void {
+  const url = new URL(req.url ?? '/', 'http://x')
+  const mode = url.searchParams.get('mode') ?? ''
+  const n = url.searchParams.get('n') ?? ''
+  if (!PET_MODES.has(mode) || !/^\d{1,2}$/.test(n)) {
+    res.writeHead(400, { 'content-type': 'application/json; charset=utf-8' })
+    res.end(JSON.stringify({ ok: false, error: 'missing or invalid frame params' }))
+    return
+  }
+  const file = resolve(petFramesDir(), mode, `${n.padStart(2, '0')}.png`)
+  if (!existsSync(file)) {
+    res.writeHead(404, { 'content-type': 'application/json; charset=utf-8' })
+    res.end(JSON.stringify({ ok: false, error: 'frame not found' }))
+    return
+  }
+  res.writeHead(200, { 'content-type': 'image/png', 'cache-control': 'no-store' })
+  res.end(readFileSync(file))
+}
+
 /**
- * Mount the pet status route.
+ * Mount the pet status and frame routes.
  * @param ctx - context carrying webServer.
  */
 export function apply(ctx: Context): void {
@@ -80,4 +110,9 @@ export function apply(ctx: Context): void {
     path: '/api/dsh-dt-pet/status',
     handler: handlePetStatus,
   }), 'dsh-dt-pet: /api/dsh-dt-pet/status route')
+  ctx.effect(() => ctx.webServer.register({
+    kind: 'exact',
+    path: '/api/dsh-dt-pet/frame',
+    handler: handleFrame,
+  }), 'dsh-dt-pet: /api/dsh-dt-pet/frame route')
 }

@@ -11,6 +11,7 @@ import { createElement } from 'react'
 import { createRoot } from 'react-dom/client'
 import type { ClientContext } from '@deepseek-ai/dsh-client-runtime/client'
 import { PetStatusPanel } from './PetStatusPanel.tsx'
+import { TaozhePet } from './TaozhePet.tsx'
 
 /** Stable data attribute identifying the injected entry row. */
 export const ENTRY_SELECTOR = '[data-dsh-dt-pet-entry]'
@@ -125,11 +126,20 @@ export function apply(ctx: ClientContext): void {
 
     tryPlace()
 
+    // Floating animated pet widget (always visible, dismissible).
+    const petHost = document.createElement('div')
+    petHost.id = 'dsh-dt-pet-widget-host'
+    document.body.appendChild(petHost)
+    const petRoot = createRoot(petHost)
+    petRoot.render(createElement(TaozhePet))
+
     return () => {
       waitObserver.disconnect()
       rootObserver.disconnect()
       entry.remove()
       closePanel()
+      petRoot.unmount()
+      petHost.remove()
     }
   }, 'dsh-dt-pet: sidebar entry')
 }

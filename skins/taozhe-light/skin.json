@@ -14,8 +14,8 @@
     "bundleWired": false
   },
   "preview": {
-    "light": "/skins/taozhe-light.png",
-    "dark": "/skins/taozhe-light.png"
+    "light": "/api/dsh-dt-skins/asset?id=taozhe-light",
+    "dark": "/api/dsh-dt-skins/asset?id=taozhe-light"
   },
   "order": 1
 }
