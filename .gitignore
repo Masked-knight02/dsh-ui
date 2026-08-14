@@ -5,6 +5,8 @@ dist/
 plugins/*/node_modules/
 plugins/*/lib/
 plugins/*/.tsbuildinfo
+skins/*/lib/
+skins/*/.tsbuildinfo
 *.log
 dsh-web-ui-main/
 dsh-web-ui-main.zip

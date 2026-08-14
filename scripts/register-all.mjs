@@ -17,7 +17,7 @@ const ROOT = resolve(import.meta.dirname, '..')
 const PROFILE = process.env.DSH_PROFILE ?? 'web'
 
 const dirs = readdirSync(join(ROOT, 'plugins'))
-  .filter(name => name.startsWith('dsh-dt-'))
+  .filter(name => name.startsWith('dsh-dt-') && name !== 'dsh-dt-all')
   .map(name => join(ROOT, 'plugins', name))
   .filter(dir => existsSync(join(dir, 'package.json')))
   .sort()

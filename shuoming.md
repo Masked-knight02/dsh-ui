@@ -81,14 +81,18 @@ cd skins/taozhe-light && corepack pnpm install && corepack pnpm run build && cd 
 ### 3. 注册插件到 DSH profile 并启动 dsh web
 
 ```bash
-for p in plugins/dsh-dt-*; do dsh plugin --profile web add "link:$(pwd)/$p"; done
+# 逐个 link 各功能插件（跳过聚合包 dsh-dt-all，避免与子插件重复注册）
+for p in plugins/dsh-dt-*; do
+  [ "$(basename "$p")" = "dsh-dt-all" ] && continue
+  dsh plugin --profile web add "link:$(pwd)/$p"
+done
 
 dsh --profile web
 # 浏览器打开打印的地址（默认 http://127.0.0.1:端口）
 ```
 
-> 也可只装聚合包 `dsh plugin --profile web add link:$(pwd)/plugins/dsh-dt-all`，
-> 但需先发布各 `@masked-knight02/*` 子包到 npm（本地开发建议逐个 link）。
+> 聚合包 `dsh-dt-all` 会一次性 insert 全部 10 个子插件的 bundle 行，与逐个 link 重复；
+> 只有「只装聚合、不逐个 link」时才用它，且需先发布各 `@masked-knight02/*` 子包到 npm。
 
 ## 需要继承的（Windows 上已定型，Mac 保持一致）
 
