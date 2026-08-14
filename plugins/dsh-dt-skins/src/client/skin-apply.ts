@@ -39,14 +39,17 @@ export function applySkin(skin: SkinLike): void {
     `body[${skin.bodyAttr}] [id='root'] {`,
     '  background: transparent !important;',
     '}',
-    // Frost the aion surface tokens so the workspace reads the wallpaper
-    // while staying legible.
+    // Frost the dsw-alias surface tokens (the main workspace surfaces) and the
+    // aion panel tokens so the wallpaper reads through while staying legible.
     `body[${skin.bodyAttr}] {`,
+    '  --dsw-alias-bg-base: rgba(255, 255, 255, 0.5) !important;',
+    '  --dsw-alias-bg-layer-1: rgba(255, 255, 255, 0.42) !important;',
+    '  --dsw-alias-bg-layer-2: rgba(255, 255, 255, 0.48) !important;',
+    '  --dsw-alias-bg-layer-3: rgba(255, 255, 255, 0.52) !important;',
+    '  --dsw-alias-bg-module-platform: rgba(255, 255, 255, 0.48) !important;',
     '  --aion-bg-base: rgba(255, 255, 255, 0.55) !important;',
     '  --aion-bg-1: rgba(255, 255, 255, 0.42) !important;',
     '  --aion-bg-2: rgba(255, 255, 255, 0.5) !important;',
-    '  --aion-bg-3: rgba(168, 184, 216, 0.22) !important;',
-    '  --aion-bg-4: rgba(168, 184, 216, 0.32) !important;',
     '}',
   ].join('\n')
 }
