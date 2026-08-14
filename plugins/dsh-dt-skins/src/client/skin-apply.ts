@@ -1,8 +1,8 @@
 /**
  * Shared skin apply/clear logic for the skin center. The wallpaper is painted
- * on document.body via a scoped stylesheet, and the body is padded so the
- * app's #root window is inset and the wallpaper frames it (the dsh web shell
- * paints an opaque #root, so a body-only background would be fully covered).
+ * on document.body, the app's #root frame is made transparent, and the aion
+ * surface tokens are remapped to translucent frosted values so the wallpaper
+ * reads through the workspace itself (reference dsh-web-ui backdrop style).
  * @module @masked-knight02/dsh-client-ui-dt-skins/client/skin-apply
  */
 
@@ -16,7 +16,7 @@ export interface SkinLike {
 /** The injected stylesheet id (one instance, rewritten per skin). */
 const STYLE_ID = 'dsh-dt-skins-scoped-style'
 
-/** Apply one skin: body attribute, wallpaper, and the #root inset rule. */
+/** Apply one skin: body attribute, wallpaper, and translucent surface tokens. */
 export function applySkin(skin: SkinLike): void {
   clearSkinAttrs()
   document.body.setAttribute(skin.bodyAttr, '')
@@ -33,15 +33,20 @@ export function applySkin(skin: SkinLike): void {
     '  background-size: cover !important;',
     '  background-position: center !important;',
     '  background-attachment: fixed !important;',
-    '  padding: 12px !important;',
-    '  box-sizing: border-box !important;',
     '  min-height: 100vh !important;',
     '}',
+    // The app frame is transparent so the panes ride on the wallpaper.
     `body[${skin.bodyAttr}] [id='root'] {`,
-    '  background: rgba(255,255,255,0.94) !important;',
-    '  border-radius: 12px !important;',
-    '  box-shadow: 0 12px 40px rgba(0,0,0,0.18) !important;',
-    '  overflow: hidden !important;',
+    '  background: transparent !important;',
+    '}',
+    // Frost the aion surface tokens so the workspace reads the wallpaper
+    // while staying legible.
+    `body[${skin.bodyAttr}] {`,
+    '  --aion-bg-base: rgba(255, 255, 255, 0.55) !important;',
+    '  --aion-bg-1: rgba(255, 255, 255, 0.42) !important;',
+    '  --aion-bg-2: rgba(255, 255, 255, 0.5) !important;',
+    '  --aion-bg-3: rgba(168, 184, 216, 0.22) !important;',
+    '  --aion-bg-4: rgba(168, 184, 216, 0.32) !important;',
     '}',
   ].join('\n')
 }
