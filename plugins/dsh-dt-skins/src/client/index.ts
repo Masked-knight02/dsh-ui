@@ -11,6 +11,7 @@ import { createElement } from 'react'
 import { createRoot } from 'react-dom/client'
 import type { ClientContext } from '@deepseek-ai/dsh-client-runtime/client'
 import { SkinCenterPanel } from './SkinCenterPanel.tsx'
+import { applySkin } from './skin-apply.ts'
 
 /** Stable data attribute identifying the injected entry row. */
 export const ENTRY_SELECTOR = '[data-dsh-dt-skins-entry]'
@@ -135,10 +136,7 @@ export function apply(ctx: ClientContext): void {
         if (skins.length === 0) return
         const activeId = localStorage.getItem('dsh.skin.active')
         const skin = skins.find(item => item.id === activeId) ?? skins[0]
-        document.body.setAttribute(skin.bodyAttr, '')
-        document.body.style.backgroundImage = `url("${skin.preview.light}")`
-        document.body.style.backgroundSize = 'cover'
-        document.body.style.backgroundPosition = 'center'
+        applySkin(skin)
         if (activeId !== skin.id) localStorage.setItem('dsh.skin.active', skin.id)
       } catch {
         // A transient failure keeps the previous background.

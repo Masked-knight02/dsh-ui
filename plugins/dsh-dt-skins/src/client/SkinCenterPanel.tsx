@@ -7,6 +7,7 @@
  */
 
 import { useEffect, useState } from 'react'
+import { applySkin as applySkinStyle, clearSkin } from './skin-apply.ts'
 
 /** A skin manifest mirrored from the host route. */
 export interface SkinManifest {
@@ -32,24 +33,6 @@ export interface SkinCenterPanelProps {
 /** The localStorage key backing the active skin. */
 const ACTIVE_KEY = 'dsh.skin.active'
 
-/** Remove every data-dsh-skin-* body attribute previously written by a skin. */
-function clearSkinAttrs(): void {
-  for (const attr of Array.from(document.body.attributes)) {
-    if (attr.name.startsWith('data-dsh-skin-')) document.body.removeAttribute(attr.name)
-  }
-  document.body.style.backgroundImage = ''
-}
-
-/** Apply one skin by its body attribute and wallpaper preview. */
-function applySkin(skin: SkinManifest): void {
-  clearSkinAttrs()
-  document.body.setAttribute(skin.bodyAttr, '')
-  document.body.style.backgroundImage = `url("${skin.preview.light}")`
-  document.body.style.backgroundSize = 'cover'
-  document.body.style.backgroundPosition = 'center'
-  localStorage.setItem(ACTIVE_KEY, skin.id)
-}
-
 /** Render the skin-center panel. */
 export function SkinCenterPanel({ onClose }: SkinCenterPanelProps): JSX.Element {
   const [skins, setSkins] = useState<SkinManifest[]>([])
@@ -72,7 +55,7 @@ export function SkinCenterPanel({ onClose }: SkinCenterPanelProps): JSX.Element 
   }, [])
 
   const reset = (): void => {
-    clearSkinAttrs()
+    clearSkin()
     localStorage.removeItem(ACTIVE_KEY)
     setActive(null)
   }
@@ -176,7 +159,7 @@ export function SkinCenterPanel({ onClose }: SkinCenterPanelProps): JSX.Element 
               </div>
               <button
                 type="button"
-                onClick={() => { applySkin(skin); setActive(skin.id) }}
+                onClick={() => { applySkinStyle(skin); localStorage.setItem(ACTIVE_KEY, skin.id); setActive(skin.id) }}
                 style={{
                   border: isActive ? '1px solid #78917b' : '1px solid #e0e1dc',
                   background: isActive ? '#e3eee5' : '#f7f7f4',
