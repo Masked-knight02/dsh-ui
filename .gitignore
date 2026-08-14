@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.pet-state/
+.logs/
+plugins/*/node_modules/
+plugins/*/lib/
+plugins/*/.tsbuildinfo
+*.log
+dsh-web-ui-main/
+dsh-web-ui-main.zip
+.npm-cache/
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride

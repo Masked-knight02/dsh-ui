@@ -1,0 +1,10 @@
+# Cross-platform line endings: force LF for text files on every checkout.
+* text=auto
+*.* text eol=lf
+
+# Binary assets stay untouched.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
