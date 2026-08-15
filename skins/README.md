@@ -14,6 +14,7 @@ served by the skin center's asset route.
 | dt-light | light | background/dt-light.png |
 | dt-dark | dark | background/dt-dark.png |
 | dt-light-deep | light | background/dt-light-deep.png |
+| dt-hudie | light | background/dt-hudie.png |
 
 ## Add a skin
 

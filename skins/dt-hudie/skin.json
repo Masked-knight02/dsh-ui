@@ -1,0 +1,22 @@
+{
+  "id": "dt-hudie",
+  "name": "dt-hudie",
+  "nameEn": "dt-hudie",
+  "author": "masked-knight02",
+  "tagline": "Butterfly workspace wallpaper",
+  "description": "DT butterfly (hudie) workspace background skin.",
+  "tags": ["light", "hudie"],
+  "accent": "#b4a0cc",
+  "bodyAttr": "data-dsh-skin-dt-hudie",
+  "package": "@masked-knight02/dsh-client-ui-skin-dt-hudie",
+  "wiring": {
+    "id": "ui-skin-dt-hudie",
+    "bundleWired": false
+  },
+  "preview": {
+    "light": "/api/dsh-dt-skins/asset?id=dt-hudie",
+    "dark": "/api/dsh-dt-skins/asset?id=dt-hudie"
+  },
+  "theme": "light",
+  "order": 4
+}

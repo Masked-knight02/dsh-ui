@@ -13,6 +13,7 @@ PNG 放在 `background/`，由皮肤中心的 asset 路由提供。
 | dt-light | light | background/dt-light.png |
 | dt-dark | dark | background/dt-dark.png |
 | dt-light-deep | light | background/dt-light-deep.png |
+| dt-hudie | light | background/dt-hudie.png |
 
 ## 新增皮肤
 
