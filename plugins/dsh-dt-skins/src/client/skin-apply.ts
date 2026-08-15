@@ -31,7 +31,8 @@ export function applySkin(skin: SkinLike): void {
     `body[${skin.bodyAttr}] {`,
     `  background-image: url("${skin.preview.light}") !important;`,
     '  background-size: cover !important;',
-    '  background-position: center !important;',
+    // Bias left so the "davidtao" corners are not cropped by cover.
+    '  background-position: left center !important;',
     '  background-attachment: fixed !important;',
     '  min-height: 100vh !important;',
     '}',
@@ -39,17 +40,22 @@ export function applySkin(skin: SkinLike): void {
     `body[${skin.bodyAttr}] [id='root'] {`,
     '  background: transparent !important;',
     '}',
+    // The sidebar column is transparent so the left wallpaper (the davidtao
+    // signature at the corners) reads through it.
+    `body[${skin.bodyAttr}] [data-pane='sidebar'] {`,
+    '  background: transparent !important;',
+    '}',
     // Frost the dsw-alias surface tokens (the main workspace surfaces) and the
     // aion panel tokens so the wallpaper reads through while staying legible.
     `body[${skin.bodyAttr}] {`,
     '  --dsw-alias-bg-base: rgba(255, 255, 255, 0.5) !important;',
-    '  --dsw-alias-bg-layer-1: rgba(255, 255, 255, 0.42) !important;',
-    '  --dsw-alias-bg-layer-2: rgba(255, 255, 255, 0.48) !important;',
-    '  --dsw-alias-bg-layer-3: rgba(255, 255, 255, 0.52) !important;',
-    '  --dsw-alias-bg-module-platform: rgba(255, 255, 255, 0.48) !important;',
+    '  --dsw-alias-bg-layer-1: rgba(255, 255, 255, 0.28) !important;',
+    '  --dsw-alias-bg-layer-2: rgba(255, 255, 255, 0.4) !important;',
+    '  --dsw-alias-bg-layer-3: rgba(255, 255, 255, 0.45) !important;',
+    '  --dsw-alias-bg-module-platform: rgba(255, 255, 255, 0.4) !important;',
     '  --aion-bg-base: rgba(255, 255, 255, 0.55) !important;',
-    '  --aion-bg-1: rgba(255, 255, 255, 0.42) !important;',
-    '  --aion-bg-2: rgba(255, 255, 255, 0.5) !important;',
+    '  --aion-bg-1: rgba(255, 255, 255, 0.3) !important;',
+    '  --aion-bg-2: rgba(255, 255, 255, 0.45) !important;',
     '}',
   ].join('\n')
 }
