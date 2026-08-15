@@ -29,6 +29,9 @@ const FROSTED = {
     aionBase: 'rgba(255, 255, 255, 0.55)',
     aion1: 'rgba(255, 255, 255, 0.3)',
     aion2: 'rgba(255, 255, 255, 0.45)',
+    sidebarFill: 'rgba(255, 255, 255, 0.06)',
+    sidebarNavActive: 'rgba(255, 255, 255, 0.2)',
+    sidebarNavHover: 'rgba(255, 255, 255, 0.12)',
   },
   dark: {
     base: 'rgba(24, 28, 36, 0.6)',
@@ -39,6 +42,9 @@ const FROSTED = {
     aionBase: 'rgba(24, 28, 36, 0.6)',
     aion1: 'rgba(24, 28, 36, 0.4)',
     aion2: 'rgba(24, 28, 36, 0.5)',
+    sidebarFill: 'rgba(24, 28, 36, 0.12)',
+    sidebarNavActive: 'rgba(255, 255, 255, 0.14)',
+    sidebarNavHover: 'rgba(255, 255, 255, 0.08)',
   },
 } as const
 
@@ -82,6 +88,9 @@ export function applySkin(skin: SkinLike): void {
     `  --aion-bg-base: ${frost.aionBase} !important;`,
     `  --aion-bg-1: ${frost.aion1} !important;`,
     `  --aion-bg-2: ${frost.aion2} !important;`,
+    `  --dsw-specific-sidebar-fill: ${frost.sidebarFill} !important;`,
+    `  --dsw-specific-sidebar-nav-item-active: ${frost.sidebarNavActive} !important;`,
+    `  --dsw-specific-sidebar-nav-item-hover: ${frost.sidebarNavHover} !important;`,
     '}',
   ].join('\n')
 }
