@@ -22,7 +22,7 @@ whenToUse: The user wants to release dsh-dt-ui (发布新版、发个版本、re
 ```sh
 git status --short                 # 无意外文件
 for p in plugins/*/; do (cd "$p" && pnpm install && pnpm run typecheck && pnpm run build); done
-# 皮肤：cd skins/taozhe-light && pnpm install && pnpm run build
+# 皮肤：for s in skins/*/; do (cd "$s" && pnpm install && pnpm run build); done
 git log --oneline -5               # 确认包含本次全部改动
 ```
 

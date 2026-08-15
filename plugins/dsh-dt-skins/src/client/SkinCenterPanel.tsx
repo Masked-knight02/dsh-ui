@@ -22,6 +22,7 @@ export interface SkinManifest {
   bodyAttr: string
   package: string
   preview: { light: string; dark: string }
+  theme?: 'light' | 'dark'
   order: number
 }
 

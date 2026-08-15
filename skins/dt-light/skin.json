@@ -1,0 +1,22 @@
+{
+  "id": "dt-light",
+  "name": "dt-light",
+  "nameEn": "dt-light",
+  "author": "masked-knight02",
+  "tagline": "Light workspace wallpaper",
+  "description": "DT light workspace background skin.",
+  "tags": ["light", "default"],
+  "accent": "#a8b8d8",
+  "bodyAttr": "data-dsh-skin-dt-light",
+  "package": "@masked-knight02/dsh-client-ui-skin-dt-light",
+  "wiring": {
+    "id": "ui-skin-dt-light",
+    "bundleWired": false
+  },
+  "preview": {
+    "light": "/api/dsh-dt-skins/asset?id=dt-light",
+    "dark": "/api/dsh-dt-skins/asset?id=dt-light"
+  },
+  "theme": "light",
+  "order": 1
+}

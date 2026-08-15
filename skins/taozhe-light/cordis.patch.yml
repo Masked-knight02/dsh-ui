@@ -1,6 +1,0 @@
-# taozhe-light skin bundle patch: inserts its dshClient row into the web
-# plugin roster. Install with `dsh plugin --profile <name> add <path-or-url>`;
-# mutual exclusion between skins is managed by the skin-center.
-- insert:
-    - id: ui-skin-taozhe-light
-      name: '@masked-knight02/dsh-client-ui-skin-taozhe-light'

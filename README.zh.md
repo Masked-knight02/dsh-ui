@@ -60,7 +60,7 @@ dsh --profile web
 ## 皮肤与桌宠
 
 - 皮肤：一个皮肤 = `skins/<id>/` + `skin.json`；皮肤中心（`plugins/dsh-dt-skins/`）
-  自动按 `skins/*/skin.json` 收录。当前收录 `taozhe-light`。新增皮肤按
+  自动按 `skins/*/skin.json` 收录。当前收录 `dt-light` / `dt-dark` / `dt-light-deep`。新增皮肤按
   `skin-developer` skill 操作。
 - 桌宠：一个桌宠 = `pets/<id>/pet.json` + `public/pet/<id>/<mode>/` 帧。当前收录
   `taozhe`。新增桌宠按 `pet-developer` skill 操作。

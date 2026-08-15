@@ -17,7 +17,7 @@
   - `dsh-dt-panel` — 文件 / 变更 / 预览面板
   - `dsh-dt-skins` — 皮肤中心（按 `skins/*/skin.json` 自动收录）
   - `dsh-dt-all` — 全家桶聚合（装一个等于装全家桶）
-- `skins/` — 皮肤（当前 `taozhe-light` 陶喆浅色）
+- `skins/` — 皮肤（当前 `dt-light` / `dt-dark` / `dt-light-deep`）
 - `pets/` — 桌宠清单（当前 `taozhe`）
 - `.dsh/skills/` — skills（skin-developer / pet-developer / dsh-dt-release）
 - `dsh-web-ui-main/` — 本地参考仓库（github.com/zhu1090093659/dsh-web-ui），
@@ -70,7 +70,7 @@ npm run dev
 
 ```bash
 for p in plugins/*/; do (cd "$p" && corepack pnpm install && corepack pnpm run build); done
-cd skins/taozhe-light && corepack pnpm install && corepack pnpm run build && cd ../..
+for s in skins/*/; do (cd "$s" && corepack pnpm install && corepack pnpm run build); done
 ```
 
 > 注意：`dsh-dt-ssh` 依赖 `ssh2`，pnpm 11 需要批准构建脚本。若安装报

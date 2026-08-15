@@ -31,6 +31,7 @@ export interface SkinManifest {
   bodyAttr: string
   package: string
   preview: { light: string; dark: string }
+  theme?: 'light' | 'dark'
   order: number
 }
 
@@ -74,10 +75,10 @@ function listSkins(): SkinManifest[] {
   return skins.sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
 }
 
-/** Resolve the public/skins asset directory (plugin-relative, else cwd). */
+/** Resolve the background asset directory (plugin-relative, else cwd). */
 function assetDir(): string {
-  const pluginRelative = fileURLToPath(new URL('../../../public/skins', import.meta.url))
-  return existsSync(pluginRelative) ? pluginRelative : resolve('public', 'skins')
+  const pluginRelative = fileURLToPath(new URL('../../../background', import.meta.url))
+  return existsSync(pluginRelative) ? pluginRelative : resolve('background')
 }
 
 /** Handle one skin registry request. */

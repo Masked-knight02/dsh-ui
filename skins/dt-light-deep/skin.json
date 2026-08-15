@@ -1,0 +1,22 @@
+{
+  "id": "dt-light-deep",
+  "name": "dt-light-deep",
+  "nameEn": "dt-light-deep",
+  "author": "masked-knight02",
+  "tagline": "Deep light workspace wallpaper",
+  "description": "DT deep light workspace background skin.",
+  "tags": ["light", "deep"],
+  "accent": "#8a97ad",
+  "bodyAttr": "data-dsh-skin-dt-light-deep",
+  "package": "@masked-knight02/dsh-client-ui-skin-dt-light-deep",
+  "wiring": {
+    "id": "ui-skin-dt-light-deep",
+    "bundleWired": false
+  },
+  "preview": {
+    "light": "/api/dsh-dt-skins/asset?id=dt-light-deep",
+    "dark": "/api/dsh-dt-skins/asset?id=dt-light-deep"
+  },
+  "theme": "light",
+  "order": 3
+}

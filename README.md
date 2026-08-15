@@ -62,7 +62,7 @@ dsh --profile web
 
 - Skins: one skin is `skins/<id>/` with a `skin.json`; the skin center
   (`plugins/dsh-dt-skins/`) auto-discovers `skins/*/skin.json`. Currently ships
-  `taozhe-light`. Add a skin by following the `skin-developer` skill.
+  `dt-light`, `dt-dark`, and `dt-light-deep`. Add a skin by following the `skin-developer` skill.
 - Pets: one pet is `pets/<id>/pet.json` plus `public/pet/<id>/<mode>/` frames.
   Currently ships `taozhe`. Add a pet by following the `pet-developer` skill.
 

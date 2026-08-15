@@ -12,7 +12,7 @@ whenToUse: The user wants a new skin (新建皮肤、加个皮肤、皮肤中心
 
 ## 契约速览
 
-- 皮肤 id 用 kebab-case（如 `taozhe-light`）；npm 名
+- 皮肤 id 用 kebab-case（如 `dt-light`）；npm 名
   `@masked-knight02/dsh-client-ui-skin-<id>`；bundle 行 id `ui-skin-<id>`。
 - 一个皮肤最少包含：`skin.json`、`src/index.ts`（无操作 host 入口）、
   `src/client/index.ts`（apply/dispose）、`package.json`、`cordis.patch.yml`、
@@ -23,9 +23,9 @@ whenToUse: The user wants a new skin (新建皮肤、加个皮肤、皮肤中心
 ## 1. 脚手架
 
 ```sh
-cp -R skins/taozhe-light skins/<new-id>
+cp -R skins/dt-light skins/<new-id>
 cd skins/<new-id>
-# 把 taozhe-light / ui-skin-taozhe-light / @masked-knight02/dsh-client-ui-skin-taozhe-light
+# 把 dt-light / ui-skin-dt-light / @masked-knight02/dsh-client-ui-skin-dt-light
 # 全局替换为 new-id / ui-skin-<new-id> / @masked-knight02/dsh-client-ui-skin-<new-id>
 ```
 

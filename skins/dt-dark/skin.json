@@ -1,0 +1,22 @@
+{
+  "id": "dt-dark",
+  "name": "dt-dark",
+  "nameEn": "dt-dark",
+  "author": "masked-knight02",
+  "tagline": "Dark workspace wallpaper",
+  "description": "DT dark workspace background skin.",
+  "tags": ["dark"],
+  "accent": "#3a4150",
+  "bodyAttr": "data-dsh-skin-dt-dark",
+  "package": "@masked-knight02/dsh-client-ui-skin-dt-dark",
+  "wiring": {
+    "id": "ui-skin-dt-dark",
+    "bundleWired": false
+  },
+  "preview": {
+    "light": "/api/dsh-dt-skins/asset?id=dt-dark",
+    "dark": "/api/dsh-dt-skins/asset?id=dt-dark"
+  },
+  "theme": "dark",
+  "order": 2
+}

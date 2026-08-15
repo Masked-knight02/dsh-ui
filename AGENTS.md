@@ -31,7 +31,7 @@ npm run register:plugins  # 一键把全部插件 link 进 dsh profile
   `@masked-knight02/dsh-client-ui-dt-<feature>`；bundle 行 id `ui-dt-<feature>`。
   `feature` 用单个短词（status / pet / git / run / ssh / board / stats / remote /
   panel / skins）。
-- 皮肤 id 用 kebab-case（如 `taozhe-light`）；npm 名
+- 皮肤 id 用 kebab-case（如 `dt-light`）；npm 名
   `@masked-knight02/dsh-client-ui-skin-<id>`；bundle 行 id `ui-skin-<id>`。
 - 桌宠 id 用 kebab-case（如 `taozhe`）；清单 `pet.json`。
 - skill 目录 `.dsh/skills/<kebab-name>/SKILL.md`，frontmatter 含 `name` /
